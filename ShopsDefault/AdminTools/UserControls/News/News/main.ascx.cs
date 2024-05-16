@@ -126,8 +126,6 @@ namespace ShopsDefault.AdminTools.UserControls.News.News
                 cls.Description = txtDetail.Text.Trim();
                 cls.TitleWeb = txtTitleWeb.Text.Trim();
                 cls.LinkSEO = txtLinkSEO.Text.Trim();
-                cls.H1SEO = txtTitle.Text.Trim();
-                cls.KeywordSEO = txtTitle.Text.Trim();
                 cls.AddTime = DateTime.Now;
                 cls.EditTime = DateTime.Now;
 
@@ -161,8 +159,6 @@ namespace ShopsDefault.AdminTools.UserControls.News.News
                 cls.Description = txtDetail.Text.Trim();
                 cls.TitleWeb = txtTitleWeb.Text.Trim();
                 cls.LinkSEO = txtLinkSEO.Text.Trim();
-                cls.H1SEO = txtTitle.Text.Trim();
-                cls.KeywordSEO = txtTitle.Text.Trim();
                 cls.EditTime = DateTime.Now;
 
                 if (cbHidden.Checked)

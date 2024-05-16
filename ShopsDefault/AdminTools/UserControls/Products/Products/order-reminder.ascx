@@ -25,7 +25,7 @@
                 <div class="popup-body">
                     <div class="card">
                         <div class="card-header">
-                            <i class="icon-note"></i>Thông tin chi tiết đơn thuê xes
+                            <i class="icon-note"></i>Thông tin chi tiết đơn thuê xe
                         </div>
                         <div class="card-body scrollbar-y-custom">
                             <div class="form-group d-none">

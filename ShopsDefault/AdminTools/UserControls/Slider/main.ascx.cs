@@ -48,7 +48,6 @@ namespace ShopsDefault.AdminTools.UserControls.Slider
         {
             txtTitle.Text = "";
             txtSummaryContent.Text = "";
-            txtDetail.Text = "";
             txtImage.Text = "";
         }
 
@@ -69,7 +68,6 @@ namespace ShopsDefault.AdminTools.UserControls.Slider
             txtTitle.Text = cls.Title.ToString();
             txtSummaryContent.Text = cls.SummaryContent.ToString();
             txtImage.Text = cls.Image.ToString();
-            txtDetail.Text = cls.Description.ToString();
             Console.WriteLine(cls.Hidden.ToString());
             if (cls.Hidden == true)
             {
@@ -111,7 +109,6 @@ namespace ShopsDefault.AdminTools.UserControls.Slider
                 cls.Title = txtTitle.Text.Trim();
                 cls.Image = txtImage.Text.Trim();
                 cls.SummaryContent = txtSummaryContent.Text.Trim();
-                cls.Description = txtDetail.Text.Trim();
                 cls.AddTime = DateTime.Now;
                 cls.EditTime = DateTime.Now;
 
@@ -141,7 +138,6 @@ namespace ShopsDefault.AdminTools.UserControls.Slider
                 cls.Title = txtTitle.Text.Trim();
                 cls.Image = txtImage.Text.Trim();
                 cls.SummaryContent = txtSummaryContent.Text.Trim();
-                cls.Description = txtDetail.Text.Trim();
                 cls.EditTime = DateTime.Now;
 
                 if (cbHidden.Checked)

@@ -87,24 +87,6 @@ namespace ShopsDefault.AdminTools.UserControls.News.Catalogs
         protected global::System.Web.UI.WebControls.TextBox txtTitleWeb;
 
         /// <summary>
-        /// txtImage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtImage;
-
-        /// <summary>
-        /// fuImage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fuImage;
-
-        /// <summary>
         /// txtDetail control.
         /// </summary>
         /// <remarks>

@@ -10,16 +10,21 @@
             $('#<%= txtLinkSEO.ClientID %>').val(locdau(str));
         });
     }
-    function getLinkImage() {
-        $('#<%= fuImage.ClientID %>').change(function () {
-            var file = $('#<%= fuImage.ClientID %>')[0].files[0]
-            $('#<%= txtImage.ClientID %>').val('/images/UploadImages/san-pham/' + file.name);
-        });
+    function validateForm() {
+        var catalogName = $('#<%= txtCatalogName.ClientID %>').val();
+        var detail = CKEDITOR.instances['<%= txtDetail.ClientID %>'].getData();
+        var titleWeb = $('#<%= txtTitleWeb.ClientID %>').val();
+        var linkSEO = $('#<%= txtLinkSEO.ClientID %>').val();
+
+        if (!catalogName || !detail || !titleWeb || !linkSEO) {
+            alert("Vui lòng nhập đầy đủ thông tin.");
+            return false; // Ngăn chặn việc submit form
+        }
+        return true; // Cho phép submit form
     }
 
     $(document).ready(function () {
         FcOut();
-        getLinkImage();
     });
 </script>
 
@@ -63,7 +68,6 @@
 
                             prm.add_endRequest(function () {
                                 FcOut();
-                                getLinkImage();
                             });
                         </script>
                         <div class="popup-body">
@@ -85,13 +89,6 @@
                                         <asp:TextBox ID="txtTitleWeb" runat="server" placeholder="Nhập tiêu đề website" CssClass="form-control"></asp:TextBox>
                                     </div>
                                     <div class="form-group">
-                                        <label for="company">Hình ảnh</label>
-                                        <div class="position-relative">
-                                            <asp:TextBox ID="txtImage" runat="server" placeholder="Nhập link hình ảnh" CssClass="form-control"></asp:TextBox>
-                                            <asp:FileUpload ID="fuImage" runat="server" CssClass="form-control btn-fu" accept=".png,.jpg,.jpeg,.gif" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
                                         <label for="street">Mô tả</label>
                                         <div class="form-control">
                                             <CKEditor:CKEditorControl ID="txtDetail" Language="Vi" BasePath="~/ckeditor" runat="server"></CKEditor:CKEditorControl>
@@ -111,7 +108,7 @@
                                     <div class="form-actions">
                                         <%--<asp:Button ID="btnSave" runat="server" Text="Lưu" OnClick="btnSave_Click" CssClass="btn btn-primary" />
                                         <asp:Button ID="btnCancel" runat="server" Text="Hủy" CssClass="btn btn-secondary" />--%>
-                                        <asp:LinkButton ID="btnSave" runat="server" OnClick="btnSave_Click" CssClass="btn btn-primary">Lưu</asp:LinkButton>
+                                        <asp:LinkButton ID="btnSave" runat="server" OnClientClick="return validateForm();" OnClick="btnSave_Click" CssClass="btn btn-primary">Lưu</asp:LinkButton>
                                         <asp:LinkButton ID="btnCancel" runat="server" CssClass="btn btn-secondary">Hủy</asp:LinkButton>
                                     </div>
                                 </div>

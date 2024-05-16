@@ -105,15 +105,6 @@ namespace ShopsDefault.AdminTools.UserControls.Slider
         protected global::System.Web.UI.WebControls.FileUpload fuImage;
 
         /// <summary>
-        /// txtDetail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::CKEditor.NET.CKEditorControl txtDetail;
-
-        /// <summary>
         /// cbHidden control.
         /// </summary>
         /// <remarks>

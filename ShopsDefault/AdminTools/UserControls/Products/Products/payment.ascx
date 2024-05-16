@@ -2,6 +2,18 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <%@ Register Assembly="CKEditor.NET" Namespace="CKEditor.NET" TagPrefix="CKEditor" %>
 
+<script type="text/javascript" language="javascript">
+    function validateForm() {
+        var paymentName = $('#<%= txtPaymentName.ClientID %>').val();
+            var detail = CKEDITOR.instances['<%= txtDetail.ClientID %>'].getData();
+
+        if (!paymentName || !detail) {
+                alert("Vui lòng nhập đầy đủ thông tin.");
+                return false; // Ngăn chặn việc submit form
+            }
+        return true; // Cho phép submit form
+    }
+</script>
 <ul class="breadcrumb">
     <li><a href="/AdminTools/BangDieuKhien.html">Bảng điều khiển</a></li>
     <li>Hình thức thanh toán</li>
@@ -64,7 +76,7 @@
                                     </div>
 
                                     <div class="form-actions">
-                                        <asp:LinkButton ID="btnSave" runat="server" OnClick="btnSave_Click" CssClass="btn btn-primary">Lưu</asp:LinkButton>
+                                        <asp:LinkButton ID="btnSave" runat="server" OnClientClick="return validateForm();" OnClick="btnSave_Click" CssClass="btn btn-primary">Lưu</asp:LinkButton>
                                         <asp:LinkButton ID="btnCancel" runat="server" CssClass="btn btn-secondary">Hủy</asp:LinkButton>
                                     </div>
                                 </div>

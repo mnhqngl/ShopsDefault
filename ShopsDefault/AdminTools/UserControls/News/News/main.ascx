@@ -16,6 +16,19 @@
             $('#<%= txtImage.ClientID %>').val('/images/UploadImages/san-pham/' + file.name);
         });
     }
+    function validateForm() {
+        var title = $('#<%= txtTitle.ClientID %>').val();
+        var titleWeb = $('#<%= txtTitleWeb.ClientID %>').val();
+        var summaryContent = $('#<%= txtSummaryContent.ClientID %>').val();
+        var detail = CKEDITOR.instances['<%= txtDetail.ClientID %>'].getData();
+        var linkSEO = $('#<%= txtLinkSEO.ClientID %>').val();
+
+        if (!title || !titleWeb || !linkSEO || !summaryContent || !detail) {
+            alert("Vui lòng nhập đầy đủ thông tin.");
+            return false; // Ngăn chặn việc submit form
+        }
+        return true; // Cho phép submit form
+    }
 
     $(document).ready(function () {
         FcOut();
@@ -127,7 +140,7 @@
                                     </div>
 
                                     <div class="form-actions">
-                                        <asp:LinkButton ID="btnSave" runat="server" OnClick="btnSave_Click" CssClass="btn btn-primary">Lưu</asp:LinkButton>
+                                        <asp:LinkButton ID="btnSave" runat="server" OnClientClick="return validateForm();" OnClick="btnSave_Click" CssClass="btn btn-primary">Lưu</asp:LinkButton>
                                         <asp:LinkButton ID="btnCancel" runat="server" CssClass="btn btn-secondary">Hủy</asp:LinkButton>
                                     </div>
                                 </div>

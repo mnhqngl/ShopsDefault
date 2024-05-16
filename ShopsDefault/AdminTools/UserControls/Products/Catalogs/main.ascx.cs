@@ -51,7 +51,6 @@ namespace ShopsDefault.AdminTools.UserControls.Products.Catalogs
             txtCatalogName.Text = "";
             txtTitleWeb.Text = "";
             txtDetail.Text = "";
-            txtImage.Text = "";
             txtLinkSEO.Text = "";
         }
 
@@ -71,7 +70,6 @@ namespace ShopsDefault.AdminTools.UserControls.Products.Catalogs
             txtID_Catalog.Text = ID_find.ToString();
             txtCatalogName.Text = cls.CatalogName.ToString();
             txtTitleWeb.Text = cls.TitleWeb.ToString();
-            txtImage.Text = cls.Image.ToString();
             txtDetail.Text = cls.Description.ToString();
             txtLinkSEO.Text = cls.LinkSEO.ToString();
             Console.WriteLine(cls.Hidden.ToString());
@@ -120,12 +118,6 @@ namespace ShopsDefault.AdminTools.UserControls.Products.Catalogs
                 Cls_ShopsCatalogs cls = new Cls_ShopsCatalogs();
                 cls.ID_Parent = 1;
                 cls.CatalogName = txtCatalogName.Text.Trim();
-                cls.Image = txtImage.Text.Trim();
-                if (fuImage.HasFile)
-                {
-                    string fileName = Path.Combine(txtImage.Text.Trim(), fuImage.FileName);
-                    fuImage.SaveAs(fileName);
-                }
                 cls.Description = txtDetail.Text.Trim();
                 cls.TitleWeb = txtTitleWeb.Text.Trim();
                 cls.LinkSEO = txtLinkSEO.Text.Trim();
@@ -159,12 +151,6 @@ namespace ShopsDefault.AdminTools.UserControls.Products.Catalogs
                 cls.ID_Catalog_find = Convert.ToInt32(txtID_Catalog.Text);
                 cls.ID_Parent = 1;
                 cls.CatalogName = txtCatalogName.Text.Trim();
-                cls.Image = txtImage.Text.Trim();
-                if (fuImage.HasFile)
-                {
-                    fuImage.SaveAs(Path.Combine(txtImage.Text.Trim()));
-                }
-
                 cls.Description = txtDetail.Text.Trim();
                 cls.TitleWeb = txtTitleWeb.Text.Trim();
                 cls.LinkSEO = txtLinkSEO.Text.Trim();
