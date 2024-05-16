@@ -118,7 +118,6 @@ namespace ShopsDefault.AdminTools.UserControls.News.Catalogs
                     string fileName = Path.Combine(txtImage.Text.Trim(), fuImage.FileName);
                     fuImage.SaveAs(fileName);
                 }
-                cls.Description = txtDetail.Text.Trim();
                 cls.TitleWeb = txtTitleWeb.Text.Trim();
                 cls.LinkSEO = txtLinkSEO.Text.Trim();
                 cls.H1SEO = txtCatalogName.Text.Trim();
