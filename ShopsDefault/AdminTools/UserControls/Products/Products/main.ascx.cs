@@ -135,10 +135,22 @@ namespace ShopsDefault.AdminTools.UserControls.Products.Products
                 cls.ProductName = txtProductName.Text.Trim();
                 cls.ProductCode = txtProductCode.Text.Trim();
                 cls.Image = txtImage.Text.Trim();
-                cls.PriceOut = Convert.ToDouble(txtPriceOut.Text.Trim());
+                if (!string.IsNullOrEmpty(txtPriceOut.Text.Trim()))
+                {
+                    cls.PriceOut = Convert.ToDouble(txtPriceOut.Text.Trim());
+                }
+                //cls.PriceOut = Convert.ToDouble(txtPriceOut.Text.Trim());
                 cls.Color = txtColor.Text.Trim();
-                cls.Amount = Convert.ToInt32(txtAmount.Text.Trim());
-                cls.Weight = Convert.ToDouble(txtWeight.Text.Trim());
+                if (!string.IsNullOrEmpty(txtAmount.Text.Trim()))
+                {
+                    cls.Amount = Convert.ToInt32(txtAmount.Text.Trim());
+                }
+                if (!string.IsNullOrEmpty(txtWeight.Text.Trim()))
+                {
+                    cls.Weight = Convert.ToDouble(txtWeight.Text.Trim());
+                }
+                //cls.Amount = Convert.ToInt32(txtAmount.Text.Trim());
+                //cls.Weight = Convert.ToDouble(txtWeight.Text.Trim());
                 cls.SummaryContent = txtSummaryContent.Text.Trim();
                 cls.Description = txtDetail.Text.Trim();
                 cls.TitleWeb = txtTitleWeb.Text.Trim();

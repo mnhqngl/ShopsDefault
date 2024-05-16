@@ -16,7 +16,24 @@
             $('#<%= txtImage.ClientID %>').val('/images/UploadImages/san-pham/' + file.name);
         });
     }
+    function validateForm() {
+        var productName = $('#<%= txtProductName.ClientID %>').val();
+        var productCode = $('#<%= txtProductCode.ClientID %>').val();
+        var priceOut = $('#<%= txtPriceOut.ClientID %>').val();
+        var amount = $('#<%= txtAmount.ClientID %>').val();
+        var color = $('#<%= txtColor.ClientID %>').val();
+        var weight = $('#<%= txtWeight.ClientID %>').val();
+        var summaryContent = $('#<%= txtSummaryContent.ClientID %>').val();
+        var image = $('#<%= txtImage.ClientID %>').val();
+        var titleWeb = $('#<%= txtTitleWeb.ClientID %>').val();
+    var linkSEO = $('#<%= txtLinkSEO.ClientID %>').val();
 
+    if (!productName || !productCode || !priceOut || !amount || !color || !weight || !summaryContent || !image || !titleWeb || !linkSEO) {
+        alert("Vui lòng nhập đầy đủ thông tin.");
+        return false;
+    }
+    return true;
+}
     $(document).ready(function () {
         FcOut();
         getLinkImage();
@@ -156,8 +173,8 @@
                                         <asp:TextBox ID="txtLinkSEO" runat="server" placeholder="Nhập đường dẫn website" CssClass="form-control"></asp:TextBox>
                                     </div>
 
-                                    <div class="form-actions">
-                                        <asp:LinkButton ID="btnSave" runat="server" OnClick="btnSave_Click" CssClass="btn btn-primary">Lưu</asp:LinkButton>
+                                    <div class="form-actions">                                      
+                                        <asp:LinkButton ID="btnSave" runat="server" OnClientClick="return validateForm();" OnClick="btnSave_Click" CssClass="btn btn-primary">Lưu</asp:LinkButton>
                                         <asp:LinkButton ID="btnCancel" runat="server" CssClass="btn btn-secondary">Hủy</asp:LinkButton>
                                     </div>
                                 </div>

@@ -9,6 +9,17 @@
             $('#<%= txtImage.ClientID %>').val('/images/UploadImages/san-pham/' + file.name);
         });
     }
+    function validateForm() {
+        var title = $('#<%= txtTitle.ClientID %>').val();
+        var summaryContent = $('#<%= txtSummaryContent.ClientID %>').val();
+        var image = $('#<%= txtImage.ClientID %>').val();
+
+        if (!title || !summaryContent || !image) {
+            alert("Vui lòng nhập đầy đủ thông tin.");
+            return false; // Ngăn chặn việc submit form
+        }
+        return true; // Cho phép submit form
+    }
 
     $(document).ready(function () {
         getLinkImage();
@@ -62,7 +73,7 @@
                         <div class="popup-body">
                             <div class="card">
                                 <div class="card-header">
-                                    <i class="icon-note"></i>Thêm danh mục
+                                    <i class="icon-note"></i>Thêm slide
                                 </div>
                                 <div class="card-body scrollbar-y-custom">
                                     <div class="form-group d-none">
@@ -85,18 +96,12 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="street">Nội dung chi tiết</label>
-                                        <div class="form-control custom-editor">
-                                            <CKEditor:CKEditorControl ID="txtDetail" Language="Vi" BasePath="~/ckeditor" runat="server"></CKEditor:CKEditorControl>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
                                         <label for="ContentMain_ctl00_cbHidden">Kích hoạt</label>
                                         <asp:CheckBox ID="cbHidden" runat="server" Style="margin-left: 8px;"></asp:CheckBox>
                                     </div>
 
                                     <div class="form-actions">
-                                        <asp:LinkButton ID="btnSave" runat="server" OnClick="btnSave_Click" CssClass="btn btn-primary">Lưu</asp:LinkButton>
+                                        <asp:LinkButton ID="btnSave" runat="server" OnClientClick="return validateForm();" OnClick="btnSave_Click" CssClass="btn btn-primary">Lưu</asp:LinkButton>
                                         <asp:LinkButton ID="btnCancel" runat="server" CssClass="btn btn-secondary">Hủy</asp:LinkButton>
                                     </div>
                                 </div>

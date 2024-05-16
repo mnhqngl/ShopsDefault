@@ -10,21 +10,14 @@
             $('#<%= txtLinkSEO.ClientID %>').val(locdau(str));
         });
     }
-    function getLinkImage() {
-        $('#<%= fuImage.ClientID %>').change(function () {
-            var file = $('#<%= fuImage.ClientID %>')[0].files[0]
-            $('#<%= txtImage.ClientID %>').val('/images/UploadImages/san-pham/' + file.name);
-        });
-    }
     function validateForm() {
         var title = $('#<%= txtTitle.ClientID %>').val();
         var summaryContent = $('#<%= txtSummaryContent.ClientID %>').val();
-        var image = $('#<%= txtImage.ClientID %>').val();
-            var detail = CKEDITOR.instances['<%= txtDetail.ClientID %>'].getData();
-            var titleWeb = $('#<%= txtTitleWeb.ClientID %>').val();
+        var detail = CKEDITOR.instances['<%= txtDetail.ClientID %>'].getData();
+        var titleWeb = $('#<%= txtTitleWeb.ClientID %>').val();
         var linkSEO = $('#<%= txtLinkSEO.ClientID %>').val();
 
-        if (!title || !summaryContent || !image || !detail || !titleWeb || !linkSEO) {
+        if (!title || !summaryContent || !detail || !titleWeb || !linkSEO) {
             alert("Vui lòng nhập đầy đủ thông tin.");
             return false; // Ngăn chặn việc submit form
         }
@@ -32,7 +25,6 @@
     }
 
     $(document).ready(function () {
-        getLinkImage();
         FcOut();
     });
 </script>
@@ -78,7 +70,6 @@
                             var prm = Sys.WebForms.PageRequestManager.getInstance();
 
                             prm.add_endRequest(function () {
-                                getLinkImage();
                                 FcOut();
                             });
                         </script>
@@ -99,13 +90,6 @@
                                     <div class="form-group">
                                         <label for="company">Mô tả</label>
                                         <asp:TextBox ID="txtSummaryContent" runat="server" placeholder="Nhập mô tả bài giới thiệu" CssClass="form-control"></asp:TextBox>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="company">Hình ảnh</label>
-                                        <div class="position-relative">
-                                            <asp:TextBox ID="txtImage" runat="server" placeholder="Nhập link hình ảnh" CssClass="form-control"></asp:TextBox>
-                                            <asp:FileUpload ID="fuImage" runat="server" CssClass="form-control btn-fu" accept=".png,.jpg,.jpeg,.gif" />
-                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="street">Nội dung chi tiết</label>

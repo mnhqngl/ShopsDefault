@@ -49,7 +49,6 @@ namespace ShopsDefault.AdminTools.UserControls.AboutUs
             txtTitle.Text = "";
             txtSummaryContent.Text = "";
             txtDetail.Text = "";
-            txtImage.Text = "";
             txtTitleWeb.Text = "";
             txtLinkSEO.Text = "";
         }
@@ -70,7 +69,6 @@ namespace ShopsDefault.AdminTools.UserControls.AboutUs
             txtID_AboutUs.Text = ID_find.ToString();
             txtTitle.Text = cls.Title.ToString();
             txtSummaryContent.Text = cls.SummaryContent.ToString();
-            txtImage.Text = cls.Image.ToString();
             txtDetail.Text = cls.Description.ToString();
             txtLinkSEO.Text = cls.LinkSEO.ToString();
             Console.WriteLine(cls.Hidden.ToString());
@@ -112,7 +110,6 @@ namespace ShopsDefault.AdminTools.UserControls.AboutUs
             {
                 Cls_AboutUs cls = new Cls_AboutUs();
                 cls.Title = txtTitle.Text.Trim();
-                cls.Image = txtImage.Text.Trim();
                 cls.SummaryContent = txtSummaryContent.Text.Trim();
                 cls.Description = txtDetail.Text.Trim();
                 cls.TitleWeb = txtTitleWeb.Text.Trim();
@@ -146,7 +143,6 @@ namespace ShopsDefault.AdminTools.UserControls.AboutUs
                 Cls_AboutUs cls = new Cls_AboutUs();
                 cls.ID_AboutUs_find = Convert.ToInt32(txtID_AboutUs.Text.Trim());
                 cls.Title = txtTitle.Text.Trim();
-                cls.Image = txtImage.Text.Trim();
                 cls.SummaryContent = txtSummaryContent.Text.Trim();
                 cls.Description = txtDetail.Text.Trim();
                 cls.TitleWeb = txtTitleWeb.Text.Trim();
