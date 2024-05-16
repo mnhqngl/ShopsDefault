@@ -50,7 +50,6 @@ namespace ShopsDefault.AdminTools.UserControls.News.Catalogs
             txtCatalogName.Text = "";
             txtTitleWeb.Text = "";
             txtDetail.Text = "";
-            txtImage.Text = "";
             txtLinkSEO.Text = "";
         }
 
@@ -69,8 +68,8 @@ namespace ShopsDefault.AdminTools.UserControls.News.Catalogs
             Cls_NewsCatalogs cls = Cls_NewsCatalogs.getOject_Key(ID_find);
             txtID_Catalog.Text = ID_find.ToString();
             txtCatalogName.Text = cls.CatalogName.ToString();
+            txtDetail.Text = cls.Description.ToString();
             txtTitleWeb.Text = cls.TitleWeb.ToString();
-            txtImage.Text = cls.Image.ToString();
             txtDetail.Text = cls.Description.ToString();
             txtLinkSEO.Text = cls.LinkSEO.ToString();
             if (cls.Hidden == true)
@@ -120,8 +119,6 @@ namespace ShopsDefault.AdminTools.UserControls.News.Catalogs
                 }
                 cls.TitleWeb = txtTitleWeb.Text.Trim();
                 cls.LinkSEO = txtLinkSEO.Text.Trim();
-                cls.H1SEO = txtCatalogName.Text.Trim();
-                cls.KeywordSEO = txtCatalogName.Text.Trim();
                 cls.AddTime = DateTime.Now;
                 cls.EditTime = DateTime.Now;
 
@@ -150,17 +147,9 @@ namespace ShopsDefault.AdminTools.UserControls.News.Catalogs
                 cls.ID_Catalog_find = Convert.ToInt32(txtID_Catalog.Text);
                 cls.ID_Parent = 1;
                 cls.CatalogName = txtCatalogName.Text.Trim();
-                cls.Image = txtImage.Text.Trim();
-                if (fuImage.HasFile)
-                {
-                    fuImage.SaveAs(Path.Combine(txtImage.Text.Trim()));
-                }
-
                 cls.Description = txtDetail.Text.Trim();
                 cls.TitleWeb = txtTitleWeb.Text.Trim();
                 cls.LinkSEO = txtLinkSEO.Text.Trim();
-                cls.H1SEO = txtCatalogName.Text.Trim();
-                cls.KeywordSEO = txtCatalogName.Text.Trim();
                 cls.EditTime = DateTime.Now;
                 if (cbHidden.Checked)
                 {
