@@ -42,8 +42,8 @@ namespace Librari {
 		public const string fn_OrdersName = "OrdersName";
 		public const int len_OrdersName = 200;
 
-		public const string fn_UserName = "UserName";
-		public const int len_UserName = 200;
+		//public const string fn_UserName = "UserName";
+		//public const int len_UserName = 200;
 
 		public const string fn_UserEmail = "UserEmail";
 		public const int len_UserEmail = 200;
@@ -81,7 +81,7 @@ namespace Librari {
 		private int _iD_Payment;
 		private int _iD_User;
 		private string _ordersName;
-		private string _userName;
+		//private string _userName;
 		private string _userEmail;
 		private string _userAddress;
 		private string _userPhone;
@@ -131,11 +131,11 @@ namespace Librari {
 		}
 
 		//Thuộc tínhUserName
-		public string UserName
-		{
-			get{return this._userName;}
-			set{this._userName = value;}
-		}
+		//public string UserName
+		//{
+		//	get{return this._userName;}
+		//	set{this._userName = value;}
+		//}
 
 		//Thuộc tínhUserEmail
 		public string UserEmail
@@ -218,13 +218,13 @@ namespace Librari {
 		/// <summary>
 		/// Hàm khởi tạo có tham số.
 		/// </summary>
-		public Cls_ShopsOrdersDetail(int id_orderproduct, int id_payment, int id_user, string ordersname, string username, string useremail, string useraddress, string userphone, string status, DateTime dayin, DateTime dayout, string description, DateTime addtime, DateTime edittime, bool hidden)
+		public Cls_ShopsOrdersDetail(int id_orderproduct, int id_payment, int id_user, string ordersname,  string useremail, string useraddress, string userphone, string status, DateTime dayin, DateTime dayout, string description, DateTime addtime, DateTime edittime, bool hidden)
 		{
 			this._iD_OrderProduct = id_orderproduct;
 			this._iD_Payment = id_payment;
 			this._iD_User = id_user;
 			this._ordersName = ordersname;
-			this._userName = username;
+			//this._userName = username;
 			this._userEmail = useremail;
 			this._userAddress = useraddress;
 			this._userPhone = userphone;
@@ -821,8 +821,8 @@ namespace Librari {
 				sqlComm.Parameters.Add("@ID_User", SqlDbType.Int).Value = ID_User;
 				//OrdersName
 				sqlComm.Parameters.Add("@OrdersName", SqlDbType.NVarChar).Value = OrdersName;
-				//UserName
-				sqlComm.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = UserName;
+				////UserName
+				//sqlComm.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = UserName;
 				//UserEmail
 				sqlComm.Parameters.Add("@UserEmail", SqlDbType.NVarChar).Value = UserEmail;
 				//UserAddress
@@ -893,11 +893,11 @@ namespace Librari {
 					sqlComm.Parameters.Add("@OrdersName", SqlDbType.NVarChar).Value = OrdersName;
 				else
 					sqlComm.Parameters.Add("@OrdersName", SqlDbType.NVarChar).Value = DBNull.Value;
-				//UserName
-				if (UserName != null)
-					sqlComm.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = UserName;
-				else
-					sqlComm.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = DBNull.Value;
+				////UserName
+				//if (UserName != null)
+				//	sqlComm.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = UserName;
+				//else
+				//	sqlComm.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = DBNull.Value;
 				//UserEmail
 				if (UserEmail != null)
 					sqlComm.Parameters.Add("@UserEmail", SqlDbType.NVarChar).Value = UserEmail;
@@ -1103,9 +1103,9 @@ namespace Librari {
 			_Object.OrdersName =  (string)dr[fn_OrdersName];
 
 			//UserName
-			if(dr.Table.Columns.Contains(fn_UserName))
-			if(dr[fn_UserName]!= DBNull.Value)
-			_Object.UserName =  (string)dr[fn_UserName];
+			//if(dr.Table.Columns.Contains(fn_UserName))
+			//if(dr[fn_UserName]!= DBNull.Value)
+			//_Object.UserName =  (string)dr[fn_UserName];
 
 			//UserEmail
 			if(dr.Table.Columns.Contains(fn_UserEmail))

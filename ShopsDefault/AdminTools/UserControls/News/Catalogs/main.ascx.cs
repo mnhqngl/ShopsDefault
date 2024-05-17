@@ -111,12 +111,6 @@ namespace ShopsDefault.AdminTools.UserControls.News.Catalogs
                 Cls_NewsCatalogs cls = new Cls_NewsCatalogs();
                 cls.ID_Parent = 1;
                 cls.CatalogName = txtCatalogName.Text.Trim();
-                cls.Image = txtImage.Text.Trim();
-                if (fuImage.HasFile)
-                {
-                    string fileName = Path.Combine(txtImage.Text.Trim(), fuImage.FileName);
-                    fuImage.SaveAs(fileName);
-                }
                 cls.TitleWeb = txtTitleWeb.Text.Trim();
                 cls.LinkSEO = txtLinkSEO.Text.Trim();
                 cls.AddTime = DateTime.Now;

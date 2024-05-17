@@ -87,7 +87,7 @@ namespace ShopsDefault.UserControls.Products
                     "<div>" +
                         "<div>" +
                             "<a href='" + domain + "/quang.html' target='_blank'>" +
-                                "<img src='" + domain + "/images/UploadImages/logo-removed.png' />" +
+                                "<img src='" + domain + "/images/UploadImages/logo-xexpress.png' />" +
                             "</a>" +
                         "</div>" +
                         "<div>" +
@@ -189,7 +189,7 @@ namespace ShopsDefault.UserControls.Products
                 sqlComm.Parameters.Add("@ID_Payment", SqlDbType.Int).Value = Convert.ToInt32(hdID_Payment.Value);
                 sqlComm.Parameters.Add("@ID_User", SqlDbType.Int).Value = 2;
                 sqlComm.Parameters.Add("@OrdersName", SqlDbType.NVarChar).Value = txtFullName.Text;
-                sqlComm.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = "";
+                //sqlComm.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = "";
                 sqlComm.Parameters.Add("@UserEmail", SqlDbType.NVarChar).Value = txtEmail.Text;
                 sqlComm.Parameters.Add("@UserAddress", SqlDbType.NVarChar).Value = txtAddress.Text;
                 sqlComm.Parameters.Add("@UserPhone", SqlDbType.NVarChar).Value = txtPhoneNumber.Text;
