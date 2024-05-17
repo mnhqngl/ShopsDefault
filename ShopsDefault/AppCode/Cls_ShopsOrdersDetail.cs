@@ -821,8 +821,8 @@ namespace Librari {
 				sqlComm.Parameters.Add("@ID_User", SqlDbType.Int).Value = ID_User;
 				//OrdersName
 				sqlComm.Parameters.Add("@OrdersName", SqlDbType.NVarChar).Value = OrdersName;
-				//UserName
-				sqlComm.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = UserName;
+				////UserName
+				//sqlComm.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = UserName;
 				//UserEmail
 				sqlComm.Parameters.Add("@UserEmail", SqlDbType.NVarChar).Value = UserEmail;
 				//UserAddress
@@ -893,11 +893,11 @@ namespace Librari {
 					sqlComm.Parameters.Add("@OrdersName", SqlDbType.NVarChar).Value = OrdersName;
 				else
 					sqlComm.Parameters.Add("@OrdersName", SqlDbType.NVarChar).Value = DBNull.Value;
-				//UserName
-				if (UserName != null)
-					sqlComm.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = UserName;
-				else
-					sqlComm.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = DBNull.Value;
+				////UserName
+				//if (UserName != null)
+				//	sqlComm.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = UserName;
+				//else
+				//	sqlComm.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = DBNull.Value;
 				//UserEmail
 				if (UserEmail != null)
 					sqlComm.Parameters.Add("@UserEmail", SqlDbType.NVarChar).Value = UserEmail;

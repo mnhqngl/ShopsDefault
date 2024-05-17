@@ -651,18 +651,18 @@ namespace Librari {
 				sqlComm.Parameters.Add("@ID_Parent", SqlDbType.Int).Value = ID_Parent;
 				//CatalogName
 				sqlComm.Parameters.Add("@CatalogName", SqlDbType.NVarChar).Value = CatalogName;
-				//Image
-				sqlComm.Parameters.Add("@Image", SqlDbType.NVarChar).Value = Image;
+				////Image
+				//sqlComm.Parameters.Add("@Image", SqlDbType.NVarChar).Value = Image;
 				//Description
 				sqlComm.Parameters.Add("@Description", SqlDbType.NText).Value = Description;
 				//TitleWeb
 				sqlComm.Parameters.Add("@TitleWeb", SqlDbType.NVarChar).Value = TitleWeb;
 				//LinkSEO
 				sqlComm.Parameters.Add("@LinkSEO", SqlDbType.VarChar).Value = LinkSEO;
-				//H1SEO
-				sqlComm.Parameters.Add("@H1SEO", SqlDbType.NVarChar).Value = H1SEO;
-				//KeywordSEO
-				sqlComm.Parameters.Add("@KeywordSEO", SqlDbType.NText).Value = KeywordSEO;
+				////H1SEO
+				//sqlComm.Parameters.Add("@H1SEO", SqlDbType.NVarChar).Value = H1SEO;
+				////KeywordSEO
+				//sqlComm.Parameters.Add("@KeywordSEO", SqlDbType.NText).Value = KeywordSEO;
 				//AddTime
 				if (AddTime.Year == 1)
 					sqlComm.Parameters.Add("@AddTime", SqlDbType.DateTime).Value = DBNull.Value;
@@ -711,11 +711,11 @@ namespace Librari {
 					sqlComm.Parameters.Add("@CatalogName", SqlDbType.NVarChar).Value = CatalogName;
 				else
 					sqlComm.Parameters.Add("@CatalogName", SqlDbType.NVarChar).Value = DBNull.Value;
-				//Image
-				if (Image != null)
-					sqlComm.Parameters.Add("@Image", SqlDbType.NVarChar).Value = Image;
-				else
-					sqlComm.Parameters.Add("@Image", SqlDbType.NVarChar).Value = DBNull.Value;
+				////Image
+				//if (Image != null)
+				//	sqlComm.Parameters.Add("@Image", SqlDbType.NVarChar).Value = Image;
+				//else
+				//	sqlComm.Parameters.Add("@Image", SqlDbType.NVarChar).Value = DBNull.Value;
 				//Description
 				if (Description != null)
 					sqlComm.Parameters.Add("@Description", SqlDbType.NText).Value = Description;
@@ -731,16 +731,16 @@ namespace Librari {
 					sqlComm.Parameters.Add("@LinkSEO", SqlDbType.VarChar).Value = LinkSEO;
 				else
 					sqlComm.Parameters.Add("@LinkSEO", SqlDbType.VarChar).Value = DBNull.Value;
-				//H1SEO
-				if (H1SEO != null)
-					sqlComm.Parameters.Add("@H1SEO", SqlDbType.NVarChar).Value = H1SEO;
-				else
-					sqlComm.Parameters.Add("@H1SEO", SqlDbType.NVarChar).Value = DBNull.Value;
-				//KeywordSEO
-				if (KeywordSEO != null)
-					sqlComm.Parameters.Add("@KeywordSEO", SqlDbType.NText).Value = KeywordSEO;
-				else
-					sqlComm.Parameters.Add("@KeywordSEO", SqlDbType.NText).Value = DBNull.Value;
+				////H1SEO
+				//if (H1SEO != null)
+				//	sqlComm.Parameters.Add("@H1SEO", SqlDbType.NVarChar).Value = H1SEO;
+				//else
+				//	sqlComm.Parameters.Add("@H1SEO", SqlDbType.NVarChar).Value = DBNull.Value;
+				////KeywordSEO
+				//if (KeywordSEO != null)
+				//	sqlComm.Parameters.Add("@KeywordSEO", SqlDbType.NText).Value = KeywordSEO;
+				//else
+				//	sqlComm.Parameters.Add("@KeywordSEO", SqlDbType.NText).Value = DBNull.Value;
 				//EditTime
 				if (EditTime.Year == 1)
 					sqlComm.Parameters.Add("@EditTime", SqlDbType.DateTime).Value = DBNull.Value;

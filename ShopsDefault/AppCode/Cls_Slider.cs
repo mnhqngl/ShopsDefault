@@ -572,8 +572,8 @@ namespace Librari {
 				sqlComm.Parameters.Add("@Image", SqlDbType.NVarChar).Value = Image;
 				//SummaryContent
 				sqlComm.Parameters.Add("@SummaryContent", SqlDbType.NVarChar).Value = SummaryContent;
-				//Description
-				sqlComm.Parameters.Add("@Description", SqlDbType.NText).Value = Description;
+				////Description
+				//sqlComm.Parameters.Add("@Description", SqlDbType.NText).Value = Description;
 				//AddTime
 				if (AddTime.Year == 1)
 					sqlComm.Parameters.Add("@AddTime", SqlDbType.DateTime).Value = DBNull.Value;
@@ -630,11 +630,11 @@ namespace Librari {
 					sqlComm.Parameters.Add("@SummaryContent", SqlDbType.NVarChar).Value = SummaryContent;
 				else
 					sqlComm.Parameters.Add("@SummaryContent", SqlDbType.NVarChar).Value = DBNull.Value;
-				//Description
-				if (Description != null)
-					sqlComm.Parameters.Add("@Description", SqlDbType.NText).Value = Description;
-				else
-					sqlComm.Parameters.Add("@Description", SqlDbType.NText).Value = DBNull.Value;
+				////Description
+				//if (Description != null)
+				//	sqlComm.Parameters.Add("@Description", SqlDbType.NText).Value = Description;
+				//else
+				//	sqlComm.Parameters.Add("@Description", SqlDbType.NText).Value = DBNull.Value;
 				//EditTime
 				if (EditTime.Year == 1)
 					sqlComm.Parameters.Add("@EditTime", SqlDbType.DateTime).Value = DBNull.Value;

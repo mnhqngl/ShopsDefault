@@ -67,18 +67,6 @@ namespace Librari {
 		public const string fn_Description = "Description";
 		public const int len_Description = 16;
 
-		public const string fn_TitleWeb = "TitleWeb";
-		public const int len_TitleWeb = 200;
-
-		public const string fn_LinkSEO = "LinkSEO";
-		public const int len_LinkSEO = 100;
-
-		public const string fn_H1SEO = "H1SEO";
-		public const int len_H1SEO = 200;
-
-		public const string fn_KeywordSEO = "KeywordSEO";
-		public const int len_KeywordSEO = 16;
-
 		public const string fn_AddTime = "AddTime";
 		public const int len_AddTime = 8;
 
@@ -100,10 +88,6 @@ namespace Librari {
 		private string _email;
 		private string _phoneNumber;
 		private string _description;
-		private string _titleWeb;
-		private string _linkSEO;
-		private string _h1SEO;
-		private string _keywordSEO;
 		private DateTime _addTime;
 		private DateTime _editTime;
 		private bool _hidden;
@@ -187,34 +171,6 @@ namespace Librari {
 			set{this._description = value;}
 		}
 
-		//Thuộc tínhTitleWeb
-		public string TitleWeb
-		{
-			get{return this._titleWeb;}
-			set{this._titleWeb = value;}
-		}
-
-		//Thuộc tínhLinkSEO
-		public string LinkSEO
-		{
-			get{return this._linkSEO;}
-			set{this._linkSEO = value;}
-		}
-
-		//Thuộc tínhH1SEO
-		public string H1SEO
-		{
-			get{return this._h1SEO;}
-			set{this._h1SEO = value;}
-		}
-
-		//Thuộc tínhKeywordSEO
-		public string KeywordSEO
-		{
-			get{return this._keywordSEO;}
-			set{this._keywordSEO = value;}
-		}
-
 		//Thuộc tínhAddTime
 		public DateTime AddTime
 		{
@@ -247,7 +203,7 @@ namespace Librari {
 		/// <summary>
 		/// Hàm khởi tạo có tham số.
 		/// </summary>
-		public Cls_Users(int id_user, int id_catalog, string username, string password, string fullname, string image, string gender, string email, string phonenumber, string description, string titleweb, string linkseo, string h1seo, string keywordseo, DateTime addtime, DateTime edittime, bool hidden)
+		public Cls_Users(int id_user, int id_catalog, string username, string password, string fullname, string image, string gender, string email, string phonenumber, string description, DateTime addtime, DateTime edittime, bool hidden)
 		{
 			this._iD_User = id_user;
 			this._iD_Catalog = id_catalog;
@@ -259,10 +215,6 @@ namespace Librari {
 			this._email = email;
 			this._phoneNumber = phonenumber;
 			this._description = description;
-			this._titleWeb = titleweb;
-			this._linkSEO = linkseo;
-			this._h1SEO = h1seo;
-			this._keywordSEO = keywordseo;
 			this._addTime = addtime;
 			this._editTime = edittime;
 			this._hidden = hidden;
@@ -849,14 +801,6 @@ namespace Librari {
 				sqlComm.Parameters.Add("@PhoneNumber", SqlDbType.VarChar).Value = PhoneNumber;
 				//Description
 				sqlComm.Parameters.Add("@Description", SqlDbType.NText).Value = Description;
-				//TitleWeb
-				sqlComm.Parameters.Add("@TitleWeb", SqlDbType.NVarChar).Value = TitleWeb;
-				//LinkSEO
-				sqlComm.Parameters.Add("@LinkSEO", SqlDbType.VarChar).Value = LinkSEO;
-				//H1SEO
-				sqlComm.Parameters.Add("@H1SEO", SqlDbType.NVarChar).Value = H1SEO;
-				//KeywordSEO
-				sqlComm.Parameters.Add("@KeywordSEO", SqlDbType.NText).Value = KeywordSEO;
 				//AddTime
 				if (AddTime.Year == 1)
 					sqlComm.Parameters.Add("@AddTime", SqlDbType.DateTime).Value = DBNull.Value;
@@ -941,25 +885,25 @@ namespace Librari {
 				else
 					sqlComm.Parameters.Add("@Description", SqlDbType.NText).Value = DBNull.Value;
 				//TitleWeb
-				if (TitleWeb != null)
-					sqlComm.Parameters.Add("@TitleWeb", SqlDbType.NVarChar).Value = TitleWeb;
-				else
-					sqlComm.Parameters.Add("@TitleWeb", SqlDbType.NVarChar).Value = DBNull.Value;
-				//LinkSEO
-				if (LinkSEO != null)
-					sqlComm.Parameters.Add("@LinkSEO", SqlDbType.VarChar).Value = LinkSEO;
-				else
-					sqlComm.Parameters.Add("@LinkSEO", SqlDbType.VarChar).Value = DBNull.Value;
-				//H1SEO
-				if (H1SEO != null)
-					sqlComm.Parameters.Add("@H1SEO", SqlDbType.NVarChar).Value = H1SEO;
-				else
-					sqlComm.Parameters.Add("@H1SEO", SqlDbType.NVarChar).Value = DBNull.Value;
-				//KeywordSEO
-				if (KeywordSEO != null)
-					sqlComm.Parameters.Add("@KeywordSEO", SqlDbType.NText).Value = KeywordSEO;
-				else
-					sqlComm.Parameters.Add("@KeywordSEO", SqlDbType.NText).Value = DBNull.Value;
+				//if (TitleWeb != null)
+				//	sqlComm.Parameters.Add("@TitleWeb", SqlDbType.NVarChar).Value = TitleWeb;
+				//else
+				//	sqlComm.Parameters.Add("@TitleWeb", SqlDbType.NVarChar).Value = DBNull.Value;
+				////LinkSEO
+				//if (LinkSEO != null)
+				//	sqlComm.Parameters.Add("@LinkSEO", SqlDbType.VarChar).Value = LinkSEO;
+				//else
+				//	sqlComm.Parameters.Add("@LinkSEO", SqlDbType.VarChar).Value = DBNull.Value;
+				////H1SEO
+				//if (H1SEO != null)
+				//	sqlComm.Parameters.Add("@H1SEO", SqlDbType.NVarChar).Value = H1SEO;
+				//else
+				//	sqlComm.Parameters.Add("@H1SEO", SqlDbType.NVarChar).Value = DBNull.Value;
+				////KeywordSEO
+				//if (KeywordSEO != null)
+				//	sqlComm.Parameters.Add("@KeywordSEO", SqlDbType.NText).Value = KeywordSEO;
+				//else
+				//	sqlComm.Parameters.Add("@KeywordSEO", SqlDbType.NText).Value = DBNull.Value;
 				//AddTime
 				if (AddTime.Year == 1)
 					sqlComm.Parameters.Add("@AddTime", SqlDbType.DateTime).Value = DBNull.Value;
@@ -1099,25 +1043,25 @@ namespace Librari {
 			if(dr[fn_Description]!= DBNull.Value)
 			_Object.Description =  (string)dr[fn_Description];
 
-			//TitleWeb
-			if(dr.Table.Columns.Contains(fn_TitleWeb))
-			if(dr[fn_TitleWeb]!= DBNull.Value)
-			_Object.TitleWeb =  (string)dr[fn_TitleWeb];
+			////TitleWeb
+			//if(dr.Table.Columns.Contains(fn_TitleWeb))
+			//if(dr[fn_TitleWeb]!= DBNull.Value)
+			//_Object.TitleWeb =  (string)dr[fn_TitleWeb];
 
-			//LinkSEO
-			if(dr.Table.Columns.Contains(fn_LinkSEO))
-			if(dr[fn_LinkSEO]!= DBNull.Value)
-			_Object.LinkSEO =  (string)dr[fn_LinkSEO];
+			////LinkSEO
+			//if(dr.Table.Columns.Contains(fn_LinkSEO))
+			//if(dr[fn_LinkSEO]!= DBNull.Value)
+			//_Object.LinkSEO =  (string)dr[fn_LinkSEO];
 
-			//H1SEO
-			if(dr.Table.Columns.Contains(fn_H1SEO))
-			if(dr[fn_H1SEO]!= DBNull.Value)
-			_Object.H1SEO =  (string)dr[fn_H1SEO];
+			////H1SEO
+			//if(dr.Table.Columns.Contains(fn_H1SEO))
+			//if(dr[fn_H1SEO]!= DBNull.Value)
+			//_Object.H1SEO =  (string)dr[fn_H1SEO];
 
-			//KeywordSEO
-			if(dr.Table.Columns.Contains(fn_KeywordSEO))
-			if(dr[fn_KeywordSEO]!= DBNull.Value)
-			_Object.KeywordSEO =  (string)dr[fn_KeywordSEO];
+			////KeywordSEO
+			//if(dr.Table.Columns.Contains(fn_KeywordSEO))
+			//if(dr[fn_KeywordSEO]!= DBNull.Value)
+			//_Object.KeywordSEO =  (string)dr[fn_KeywordSEO];
 
 			//AddTime
 			if(dr.Table.Columns.Contains(fn_AddTime))
