@@ -16,7 +16,7 @@
         var detail = CKEDITOR.instances['<%= txtDetail.ClientID %>'].getData();
         var linkSEO = $('#<%= txtLinkSEO.ClientID %>').val();
 
-        if (!catalogName || !titleWeb || !linkSEO) {
+        if (!catalogName || !titleWeb || !linkSEO || !detail) {
             alert("Vui lòng nhập đầy đủ thông tin.");
             return false; // Ngăn chặn việc submit form
         }

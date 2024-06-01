@@ -12,30 +12,27 @@ namespace Librari {
 	public partial class Cls_AboutUs
 	{
 		protected string sSQL;
-		#region Tham số cho Procedure
-		//Tham số cho Procudure
-		protected const string st_tbAboutUs_Insert = "st_tbAboutUs_Insert";
-		protected const string st_tbAboutUs_Update = "st_tbAboutUs_Update";
-		protected const string st_tbAboutUs_SelectAll_Active_LikeKey = "st_tbAboutUs_SelectAll_Active_LikeKey";
-		protected const string st_tbAboutUs_SelectAll_LikeKey = "st_tbAboutUs_SelectAll_LikeKey";
-		protected const string st_tbAboutUs_Delete = "st_tbAboutUs_Delete";
-		protected const string st_tbAboutUs_SelectByID = "st_tbAboutUs_SelectByID";
-		protected const string st_tbAboutUs_SelectAll = "st_tbAboutUs_SelectAll";
-		protected const string st_tbAboutUs_Count = "st_tbAboutUs_Count";
-		protected const string st_tbAboutUs_Count_Key = "st_tbAboutUs_Count_Key";
-		protected const string TABLE_NAME = "tbAboutUs";
-		#endregion Tham số cho Procedure
+        #region Tham số cho Procedure
+        //Tham số cho Procudure
+        protected const string st_tbAboutUs_Insert = "st_tbAboutUs_Insert";
+        protected const string st_tbAboutUs_Update = "st_tbAboutUs_Update";
+        protected const string st_tbAboutUs_SelectAll_Active_LikeKey = "st_tbAboutUs_SelectAll_Active_LikeKey";
+        protected const string st_tbAboutUs_SelectAll_LikeKey = "st_tbAboutUs_SelectAll_LikeKey";
+        protected const string st_tbAboutUs_Delete = "st_tbAboutUs_Delete";
+        protected const string st_tbAboutUs_SelectByID = "st_tbAboutUs_SelectByID";
+        protected const string st_tbAboutUs_SelectAll = "st_tbAboutUs_SelectAll";
+        protected const string st_tbAboutUs_Count = "st_tbAboutUs_Count";
+        protected const string st_tbAboutUs_Count_Key = "st_tbAboutUs_Count_Key";
+        protected const string TABLE_NAME = "tbAboutUs";
+        #endregion Tham số cho Procedure
 
-		#region Các tên filed của table.
-		//Các tên filed của table.
-		public const string fn_ID_AboutUs = "ID_AboutUs";
+        #region Các tên filed của table.
+        //Các tên filed của table.
+        public const string fn_ID_AboutUs = "ID_AboutUs";
 		public const int len_ID_AboutUs = 4;
 
 		public const string fn_Title = "Title";
 		public const int len_Title = 400;
-
-		public const string fn_Image = "Image";
-		public const int len_Image = 200;
 
 		public const string fn_SummaryContent = "SummaryContent";
 		public const int len_SummaryContent = 1000;
@@ -48,12 +45,6 @@ namespace Librari {
 
 		public const string fn_LinkSEO = "LinkSEO";
 		public const int len_LinkSEO = 200;
-
-		public const string fn_H1SEO = "H1SEO";
-		public const int len_H1SEO = 400;
-
-		public const string fn_KeywordSEO = "KeywordSEO";
-		public const int len_KeywordSEO = 16;
 
 		public const string fn_AddTime = "AddTime";
 		public const int len_AddTime = 8;
@@ -68,13 +59,10 @@ namespace Librari {
 		private int _iD_AboutUs_find;
 		private int _iD_AboutUs;
 		private string _title;
-		private string _image;
 		private string _summaryContent;
 		private string _description;
 		private string _titleWeb;
 		private string _linkSEO;
-		private string _h1SEO;
-		private string _keywordSEO;
 		private DateTime _addTime;
 		private DateTime _editTime;
 		private bool _hidden;
@@ -100,13 +88,6 @@ namespace Librari {
 		{
 			get{return this._title;}
 			set{this._title = value;}
-		}
-
-		//Thuộc tínhImage
-		public string Image
-		{
-			get{return this._image;}
-			set{this._image = value;}
 		}
 
 		//Thuộc tínhSummaryContent
@@ -136,21 +117,6 @@ namespace Librari {
 			get{return this._linkSEO;}
 			set{this._linkSEO = value;}
 		}
-
-		//Thuộc tínhH1SEO
-		public string H1SEO
-		{
-			get{return this._h1SEO;}
-			set{this._h1SEO = value;}
-		}
-
-		//Thuộc tínhKeywordSEO
-		public string KeywordSEO
-		{
-			get{return this._keywordSEO;}
-			set{this._keywordSEO = value;}
-		}
-
 		//Thuộc tínhAddTime
 		public DateTime AddTime
 		{
@@ -183,17 +149,14 @@ namespace Librari {
 		/// <summary>
 		/// Hàm khởi tạo có tham số.
 		/// </summary>
-		public Cls_AboutUs(int id_aboutus, string title, string image, string summarycontent, string description, string titleweb, string linkseo, string h1seo, string keywordseo, DateTime addtime, DateTime edittime, bool hidden)
+		public Cls_AboutUs(int id_aboutus, string title, string summarycontent, string description, string titleweb, string linkseo, DateTime addtime, DateTime edittime, bool hidden)
 		{
 			this._iD_AboutUs = id_aboutus;
 			this._title = title;
-			this._image = image;
 			this._summaryContent = summarycontent;
 			this._description = description;
 			this._titleWeb = titleweb;
 			this._linkSEO = linkseo;
-			this._h1SEO = h1seo;
-			this._keywordSEO = keywordseo;
 			this._addTime = addtime;
 			this._editTime = edittime;
 			this._hidden = hidden;
@@ -610,14 +573,12 @@ namespace Librari {
 		public int doInsert()
 		{
 			SqlConnection conn = new AccessDB().get_Conn();
-			SqlCommand sqlComm = new SqlCommand(st_tbAboutUs_Insert, conn);
+			SqlCommand sqlComm = new SqlCommand("st_tbAboutUs_Insert", conn);
 			sqlComm.CommandType = CommandType.StoredProcedure;
 			try
 			{
 				//Title
 				sqlComm.Parameters.Add("@Title", SqlDbType.NVarChar).Value = Title;
-				//Image
-				sqlComm.Parameters.Add("@Image", SqlDbType.NVarChar).Value = Image;
 				//SummaryContent
 				sqlComm.Parameters.Add("@SummaryContent", SqlDbType.NVarChar).Value = SummaryContent;
 				//Description
@@ -626,10 +587,6 @@ namespace Librari {
 				sqlComm.Parameters.Add("@TitleWeb", SqlDbType.NVarChar).Value = TitleWeb;
 				//LinkSEO
 				sqlComm.Parameters.Add("@LinkSEO", SqlDbType.VarChar).Value = LinkSEO;
-				//H1SEO
-				sqlComm.Parameters.Add("@H1SEO", SqlDbType.NVarChar).Value = H1SEO;
-				//KeywordSEO
-				sqlComm.Parameters.Add("@KeywordSEO", SqlDbType.NText).Value = KeywordSEO;
 				//AddTime
 				if (AddTime.Year == 1)
 					sqlComm.Parameters.Add("@AddTime", SqlDbType.DateTime).Value = DBNull.Value;
@@ -676,11 +633,6 @@ namespace Librari {
 					sqlComm.Parameters.Add("@Title", SqlDbType.NVarChar).Value = Title;
 				else
 					sqlComm.Parameters.Add("@Title", SqlDbType.NVarChar).Value = DBNull.Value;
-				//Image
-				if (Image != null)
-					sqlComm.Parameters.Add("@Image", SqlDbType.NVarChar).Value = Image;
-				else
-					sqlComm.Parameters.Add("@Image", SqlDbType.NVarChar).Value = DBNull.Value;
 				//SummaryContent
 				if (SummaryContent != null)
 					sqlComm.Parameters.Add("@SummaryContent", SqlDbType.NVarChar).Value = SummaryContent;
@@ -701,16 +653,6 @@ namespace Librari {
 					sqlComm.Parameters.Add("@LinkSEO", SqlDbType.VarChar).Value = LinkSEO;
 				else
 					sqlComm.Parameters.Add("@LinkSEO", SqlDbType.VarChar).Value = DBNull.Value;
-				//H1SEO
-				if (H1SEO != null)
-					sqlComm.Parameters.Add("@H1SEO", SqlDbType.NVarChar).Value = H1SEO;
-				else
-					sqlComm.Parameters.Add("@H1SEO", SqlDbType.NVarChar).Value = DBNull.Value;
-				//KeywordSEO
-				if (KeywordSEO != null)
-					sqlComm.Parameters.Add("@KeywordSEO", SqlDbType.NText).Value = KeywordSEO;
-				else
-					sqlComm.Parameters.Add("@KeywordSEO", SqlDbType.NText).Value = DBNull.Value;
 				//EditTime
 				if (EditTime.Year == 1)
 					sqlComm.Parameters.Add("@EditTime", SqlDbType.DateTime).Value = DBNull.Value;
@@ -805,11 +747,6 @@ namespace Librari {
 			if(dr[fn_Title]!= DBNull.Value)
 			_Object.Title =  (string)dr[fn_Title];
 
-			//Image
-			if(dr.Table.Columns.Contains(fn_Image))
-			if(dr[fn_Image]!= DBNull.Value)
-			_Object.Image =  (string)dr[fn_Image];
-
 			//SummaryContent
 			if(dr.Table.Columns.Contains(fn_SummaryContent))
 			if(dr[fn_SummaryContent]!= DBNull.Value)
@@ -829,16 +766,6 @@ namespace Librari {
 			if(dr.Table.Columns.Contains(fn_LinkSEO))
 			if(dr[fn_LinkSEO]!= DBNull.Value)
 			_Object.LinkSEO =  (string)dr[fn_LinkSEO];
-
-			//H1SEO
-			if(dr.Table.Columns.Contains(fn_H1SEO))
-			if(dr[fn_H1SEO]!= DBNull.Value)
-			_Object.H1SEO =  (string)dr[fn_H1SEO];
-
-			//KeywordSEO
-			if(dr.Table.Columns.Contains(fn_KeywordSEO))
-			if(dr[fn_KeywordSEO]!= DBNull.Value)
-			_Object.KeywordSEO =  (string)dr[fn_KeywordSEO];
 
 			//AddTime
 			if(dr.Table.Columns.Contains(fn_AddTime))
