@@ -12,10 +12,26 @@
     }
     function getLinkImage() {
         $('#<%= fuImage.ClientID %>').change(function () {
-            var file = $('#<%= fuImage.ClientID %>')[0].files[0]
-            $('#<%= txtImage.ClientID %>').val('/images/UploadImages/san-pham/' + file.name);
-        });
-    }
+        var file = $('#<%= fuImage.ClientID %>')[0].files[0];
+
+        // Lấy tên nhóm xe được chọn
+        var selectedCategory = $('#<%= txtID_Catalog.ClientID %> option:selected').text().toLowerCase().replace(/ /g, "-");
+
+        // Hàm chuyển đổi ký tự có dấu sang không dấu
+        function removeAccents(str) {
+            return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        }
+
+        // Chuyển đổi tên nhóm xe
+        selectedCategory = removeAccents(selectedCategory);
+
+        if (selectedCategory && selectedCategory !== "chon-nhom-xe") {
+            $('#<%= txtImage.ClientID %>').val('/images/UploadImages/san-pham/' + selectedCategory + '/' + file.name);
+        } else {
+            alert("Vui lòng chọn nhóm Xe.");
+        }
+    });
+}
     function validateForm() {
         var productName = $('#<%= txtProductName.ClientID %>').val();
         var productCode = $('#<%= txtProductCode.ClientID %>').val();

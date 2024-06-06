@@ -18,6 +18,7 @@ namespace ShopsDefault.AdminTools.UserControls.Products.Products
                 this.BindData();
             }
         }
+
         protected void Page_Init(object sender, EventArgs e)
         {
             ds.ConnectionString = Librari.AccessDB.sConn;
@@ -65,6 +66,7 @@ namespace ShopsDefault.AdminTools.UserControls.Products.Products
             txtDetail.Text = "";
             txtImage.Text = "";
             txtLinkSEO.Text = "";
+            cbHidden.Checked = false;
         }
 
         protected void btnAdd_Click(object sender, EventArgs e)
@@ -93,15 +95,7 @@ namespace ShopsDefault.AdminTools.UserControls.Products.Products
             txtImage.Text = cls.Image.ToString();
             txtDetail.Text = cls.Description.ToString();
             txtLinkSEO.Text = cls.LinkSEO.ToString();
-            Console.WriteLine(cls.Hidden.ToString());
-            if (cls.Hidden == true)
-            {
-                cbHidden.Checked = true;
-            }
-            else
-            {
-                cbHidden.Checked = false;
-            }
+            cbHidden.Checked = cls.Hidden;
 
             popup.Show();
         }
@@ -125,49 +119,70 @@ namespace ShopsDefault.AdminTools.UserControls.Products.Products
             BindData();
         }
 
-
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            if (btnSave.Text == "Lưu")
+            if (fuImage.HasFile)
             {
-                Cls_ShopsProducts cls = new Cls_ShopsProducts();
-                cls.ID_Catalog = Convert.ToInt32(txtID_Catalog.SelectedValue.ToString());
-                cls.ProductName = txtProductName.Text.Trim();
-                cls.ProductCode = txtProductCode.Text.Trim();
-                cls.Image = txtImage.Text.Trim();
-                if (!string.IsNullOrEmpty(txtPriceOut.Text.Trim()))
+                string selectedCategory = txtID_Catalog.SelectedItem.Text.ToLower().Replace(" ", "-");
+                if (!string.IsNullOrEmpty(selectedCategory) && selectedCategory != "chọn-nhóm-xe")
                 {
-                    cls.PriceOut = Convert.ToDouble(txtPriceOut.Text.Trim());
-                }
-                //cls.PriceOut = Convert.ToDouble(txtPriceOut.Text.Trim());
-                cls.Color = txtColor.Text.Trim();
-                if (!string.IsNullOrEmpty(txtAmount.Text.Trim()))
-                {
-                    cls.Amount = Convert.ToInt32(txtAmount.Text.Trim());
-                }
-                if (!string.IsNullOrEmpty(txtWeight.Text.Trim()))
-                {
-                    cls.Weight = Convert.ToDouble(txtWeight.Text.Trim());
-                }
-                //cls.Amount = Convert.ToInt32(txtAmount.Text.Trim());
-                //cls.Weight = Convert.ToDouble(txtWeight.Text.Trim());
-                cls.SummaryContent = txtSummaryContent.Text.Trim();
-                cls.Description = txtDetail.Text.Trim();
-                cls.TitleWeb = txtTitleWeb.Text.Trim();
-                cls.LinkSEO = txtLinkSEO.Text.Trim();
-                cls.H1SEO = txtProductName.Text.Trim();
-                cls.KeywordSEO = txtProductName.Text.Trim();
-                cls.AddTime = DateTime.Now;
-                cls.EditTime = DateTime.Now;
+                    try
+                    {
+                        string filename = Path.GetFileName(fuImage.FileName);
+                        string folderPath = Server.MapPath("~/images/UploadImages/san-pham/" + selectedCategory + "/");
 
-                if (cbHidden.Checked)
-                {
-                    cls.Hidden = true;
+                        // Tạo thư mục nếu chưa tồn tại
+                        if (!Directory.Exists(folderPath))
+                        {
+                            Directory.CreateDirectory(folderPath);
+                        }
+
+                        // Lưu tệp vào thư mục
+                        string filePath = folderPath + filename;
+                        fuImage.SaveAs(filePath);
+
+                        // Cập nhật đường dẫn hình ảnh
+                        txtImage.Text = "/images/UploadImages/san-pham/" + selectedCategory + "/" + filename;
+                    }
+                    catch (Exception ex)
+                    {
+                        string sMessages = "alert('Đã xảy ra lỗi trong quá trình tải tệp: " + ex.Message + "');";
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", sMessages, true);
+                        return;
+                    }
                 }
                 else
                 {
-                    cls.Hidden = false;
+                    string sMessages = "alert('Vui lòng chọn nhóm Xe hợp lệ.');";
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", sMessages, true);
+                    return;
                 }
+            }
+
+            Cls_ShopsProducts cls = new Cls_ShopsProducts
+            {
+                ID_Catalog = Convert.ToInt32(txtID_Catalog.SelectedValue),
+                ProductName = txtProductName.Text.Trim(),
+                ProductCode = txtProductCode.Text.Trim(),
+                Image = txtImage.Text.Trim(),
+                PriceOut = !string.IsNullOrEmpty(txtPriceOut.Text.Trim()) ? Convert.ToDouble(txtPriceOut.Text.Trim()) : 0,
+                Color = txtColor.Text.Trim(),
+                Amount = !string.IsNullOrEmpty(txtAmount.Text.Trim()) ? Convert.ToInt32(txtAmount.Text.Trim()) : 0,
+                Weight = !string.IsNullOrEmpty(txtWeight.Text.Trim()) ? Convert.ToDouble(txtWeight.Text.Trim()) : 0,
+                SummaryContent = txtSummaryContent.Text.Trim(),
+                Description = txtDetail.Text.Trim(),
+                TitleWeb = txtTitleWeb.Text.Trim(),
+                LinkSEO = txtLinkSEO.Text.Trim(),
+                H1SEO = txtProductName.Text.Trim(),
+                KeywordSEO = txtProductName.Text.Trim(),
+                EditTime = DateTime.Now,
+                Hidden = cbHidden.Checked
+            };
+
+            if (btnSave.Text == "Lưu")
+            {
+                cls.AddTime = DateTime.Now;
+
                 if (cls.doInsert() == 1)
                 {
                     string sMessages = "alert('Đã thêm dữ liệu thành công!');";
@@ -181,32 +196,8 @@ namespace ShopsDefault.AdminTools.UserControls.Products.Products
             }
             else if (btnSave.Text == "Cập nhật")
             {
-                Cls_ShopsProducts cls = new Cls_ShopsProducts();
                 cls.ID_Product_find = Convert.ToInt32(txtID_Product.Text.Trim());
-                cls.ID_Catalog = Convert.ToInt32(txtID_Catalog.SelectedValue.ToString());
-                cls.ProductName = txtProductName.Text.Trim();
-                cls.ProductCode = txtProductCode.Text.Trim();
-                cls.Image = txtImage.Text.Trim();
-                cls.PriceOut = Convert.ToDouble(txtPriceOut.Text.Trim());
-                cls.Color = txtColor.Text.Trim();
-                cls.Amount = Convert.ToInt32(txtAmount.Text.Trim());
-                cls.Weight = Convert.ToDouble(txtWeight.Text.Trim());
-                cls.SummaryContent = txtSummaryContent.Text.Trim();
-                cls.Description = txtDetail.Text.Trim();
-                cls.TitleWeb = txtTitleWeb.Text.Trim();
-                cls.LinkSEO = txtLinkSEO.Text.Trim();
-                cls.H1SEO = txtProductName.Text.Trim();
-                cls.KeywordSEO = txtProductName.Text.Trim();
-                cls.EditTime = DateTime.Now;
 
-                if (cbHidden.Checked)
-                {
-                    cls.Hidden = true;
-                }
-                else
-                {
-                    cls.Hidden = false;
-                }
                 if (cls.doUpdate() == 1)
                 {
                     string sMessages = "alert('Đã chỉnh sửa dữ liệu thành công!');";
