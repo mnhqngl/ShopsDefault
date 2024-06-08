@@ -15,6 +15,60 @@ namespace ShopsDefault.AdminTools
     {
 
         /// <summary>
+        /// bestSellingProductByQuantityName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl bestSellingProductByQuantityName;
+
+        /// <summary>
+        /// bestSellingProductByQuantityTotalSold control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl bestSellingProductByQuantityTotalSold;
+
+        /// <summary>
+        /// bestSellingProductByQuantityTotalRevenue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl bestSellingProductByQuantityTotalRevenue;
+
+        /// <summary>
+        /// bestSellingProductByRevenueName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl bestSellingProductByRevenueName;
+
+        /// <summary>
+        /// bestSellingProductByRevenueTotalSold control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl bestSellingProductByRevenueTotalSold;
+
+        /// <summary>
+        /// bestSellingProductByRevenueTotalRevenue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl bestSellingProductByRevenueTotalRevenue;
+
+        /// <summary>
         /// order_reminder_ww control.
         /// </summary>
         /// <remarks>

@@ -29,7 +29,7 @@
                                 </ul>
                                 <div class="action">
                                     <a href="#" class="btn-default">Thuê xe</a>
-                                    <a href="<%# Utils.getAHrefURL("san-pham", Eval("linkSEOCatalog"),Eval("LinkSEO"), Eval("ID_Product"))%>" class="btn-default">Chi tiết</a>
+                                    <a href="<%# Utils.getAHrefURLrelates( Eval("LinkSEO"), Eval("ID_Product"))%>" class="btn-default">Chi tiết</a>
                                 </div>
                             </div>
                         </div>

@@ -8,6 +8,11 @@
         #revenueChart {
             max-height: 450px;
         }
+
+        .product-info {
+            display: flex;
+            align-items: center;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Header" runat="server">
@@ -33,41 +38,81 @@
                         </div>
                     </div>
                 </div>
-            <div class="col-12">
-                <div class="block-default">
-                    <div class="block-header">
-                        <i class="icon-bag"></i>Danh sách đơn thuê xe ngày mai
-                    </div>
-                    <div class="block-body">
-                        <div id="order_reminder_ww" runat="server">
+                    <div class="col-12">
+                        <div class="block-default">
+                            <div class="block-header">
+                                <i class="icon-star"></i>Sản phẩm nổi bật trong tháng
+                       
+                            </div>
+                            <div class="block-body">
+                                <div class="product-info">
+                                    <div class="col-6">
+                                        <p><strong>Tên xe: <i style ="font-size: 18px" id="bestSellingProductByQuantityName" runat="server"></i></strong></p>
+                                        <a><strong>Số lượt thuê:</strong> <span id="bestSellingProductByQuantityTotalSold" runat="server"></span></a></br>
+                                        <a><strong>Tổng doanh thu:</strong> <span id="bestSellingProductByQuantityTotalRevenue" runat="server"></span></a>
+                                    </div>
+                                    <div class="col-6">
+                                         <p><strong>Tên xe: <i style ="font-size: 18px" id="bestSellingProductByRevenueName" runat="server"></i></strong></p>
+                                        <a><strong>Số lượt thuê:</strong> <span id="bestSellingProductByRevenueTotalSold" runat="server"></span></a></br>
+                                        <a><strong>Tổng doanh thu:</strong> <span id="bestSellingProductByRevenueTotalRevenue" runat="server"></span></a>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div></br>
+
+                    <%--<div class="col-6">
+                        <div class="block-default">
+                            <div class="block-header">
+                                <i class="icon-star"></i>Sản phẩm bán chạy nhất theo doanh thu
+       
+                            </div>
+                            <div class="block-body">
+                                <div class="product-info">
+                                    <div>
+                                        <h5 id="bestSellingProductByRevenueName" runat="server"></h5>
+                                        <p><strong>Tổng số bán:</strong> <span id="bestSellingProductByRevenueTotalSold" runat="server"></span></p>
+                                        <p><strong>Tổng doanh thu:</strong> <span id="bestSellingProductByRevenueTotalRevenue" runat="server"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>--%>
+                </div>
+                <div class="col-12">
+                    <div class="block-default">
+                        <div class="block-header my-md-3">
+                            <i class="icon-bag"></i>Danh sách đơn thuê xe ngày mai
+                        </div>
+                        <div class="block-body">
+                            <div id="order_reminder_ww" runat="server">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-12">
-                <div class="block-default my-md-3">
-                    <div class="block-header">
-                        <i class="icon-bag"></i>Danh sách đơn thuê xe tới ngày trả
-                    </div>
-                    <div class="block-body">
-                        <div id="order_reminder_getback_ww" runat="server">
+                <div class="col-12">
+                    <div class="block-default my-md-3">
+                        <div class="block-header">
+                            <i class="icon-bag"></i>Danh sách đơn thuê xe tới ngày trả
+                        </div>
+                        <div class="block-body">
+                            <div id="order_reminder_getback_ww" runat="server">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-12">
-                <div class="block-default">
-                    <div class="block-header">
-                        <i class="icon-bubble"></i>Khách hàng liên hệ gần đây
-                    </div>
-                    <div class="block-body">
-                        <div id="contact_reminder_ww" runat="server">
+                <div class="col-12">
+                    <div class="block-default">
+                        <div class="block-header">
+                            <i class="icon-bubble"></i>Khách hàng liên hệ gần đây
+                        </div>
+                        <div class="block-body">
+                            <div id="contact_reminder_ww" runat="server">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </asp:Content>
 <asp:Content ID="Content7" ContentPlaceHolderID="Right" runat="server">

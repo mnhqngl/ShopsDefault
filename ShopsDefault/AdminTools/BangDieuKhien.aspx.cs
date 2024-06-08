@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -20,6 +21,7 @@ namespace ShopsDefault.AdminTools
             {
                 //LoadRevenueStatistics();
                 GetMonthlyRevenue();
+                LoadBestSellingProducts(DateTime.Now.Year, DateTime.Now.Month);
                 Order_Reminder_Load();
                 Order_Reminder_Getback_Load();
                 Contact_Reminder_Load();
@@ -52,24 +54,58 @@ namespace ShopsDefault.AdminTools
             LabelsJson = Newtonsoft.Json.JsonConvert.SerializeObject(labels);
             DataJson = Newtonsoft.Json.JsonConvert.SerializeObject(data);
         }
-        private void LoadRevenueStatistics()
+
+        //private void LoadRevenueStatistics()
+        //{
+        //    RevenueStatistics stats = new RevenueStatistics();
+        //    DataTable dt = stats.GetAllMonthlyRevenues();
+
+        //    // Prepare data for the chart
+        //    string[] labels = new string[dt.Rows.Count];
+        //    decimal[] data = new decimal[dt.Rows.Count];
+
+        //    for (int i = 0; i < dt.Rows.Count; i++)
+        //    {
+        //        labels[i] = dt.Rows[i]["Month"] + "/" + dt.Rows[i]["Year"];
+        //        data[i] = Convert.ToDecimal(dt.Rows[i]["TotalRevenue"]);
+        //    }
+
+        //    // Pass data to the client side
+        //    LabelsJson = Newtonsoft.Json.JsonConvert.SerializeObject(labels);
+        //    DataJson = Newtonsoft.Json.JsonConvert.SerializeObject(data);
+        //}
+        private void LoadBestSellingProducts(int year, int month)
         {
-            RevenueStatistics stats = new RevenueStatistics();
-            DataTable dt = stats.GetAllMonthlyRevenues();
-
-            // Prepare data for the chart
-            string[] labels = new string[dt.Rows.Count];
-            decimal[] data = new decimal[dt.Rows.Count];
-
-            for (int i = 0; i < dt.Rows.Count; i++)
+            AccessDB db = new AccessDB();
+            using (SqlConnection conn = db.get_Conn())
             {
-                labels[i] = dt.Rows[i]["Month"] + "/" + dt.Rows[i]["Year"];
-                data[i] = Convert.ToDecimal(dt.Rows[i]["TotalRevenue"]);
-            }
+                using (SqlCommand cmd = new SqlCommand("GetBestSellingProductsOfMonth", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Year", year);
+                    cmd.Parameters.AddWithValue("@Month", month);
 
-            // Pass data to the client side
-            LabelsJson = Newtonsoft.Json.JsonConvert.SerializeObject(labels);
-            DataJson = Newtonsoft.Json.JsonConvert.SerializeObject(data);
+                    conn.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            // Sản phẩm bán chạy nhất theo số lượng
+                            bestSellingProductByQuantityName.InnerText = reader["ProductName"].ToString();
+                            bestSellingProductByQuantityTotalSold.InnerText = reader["TotalAmountSold"].ToString();
+                            bestSellingProductByQuantityTotalRevenue.InnerText = reader["TotalRevenue"].ToString() + "₫";
+                        }
+
+                        if (reader.NextResult() && reader.Read())
+                        {
+                            // Sản phẩm bán chạy nhất theo doanh thu
+                            bestSellingProductByRevenueName.InnerText = reader["ProductName"].ToString();
+                            bestSellingProductByRevenueTotalSold.InnerText = reader["TotalAmountSold"].ToString();
+                            bestSellingProductByRevenueTotalRevenue.InnerText = reader["TotalRevenue"].ToString() + "₫";
+                        }
+                    }
+                }
+            }
         }
         private void Order_Reminder_Load()
         {
@@ -79,9 +115,7 @@ namespace ShopsDefault.AdminTools
                 Control ctl_main = LoadControl(linkFile);
                 order_reminder_ww.Controls.Add(ctl_main);
             }
-
         }
-
         private void Order_Reminder_Getback_Load()
         {
             string linkFile = "~/AdminTools/UserControls/Products/Products/order-reminder-getback.ascx";
@@ -92,7 +126,6 @@ namespace ShopsDefault.AdminTools
             }
 
         }
-
         private void Contact_Reminder_Load()
         {
             string linkFile = "~/AdminTools/UserControls/Contact/contact-reminder.ascx";
