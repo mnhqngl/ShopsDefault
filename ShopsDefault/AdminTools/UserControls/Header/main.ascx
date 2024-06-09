@@ -15,7 +15,7 @@
             <div class="hd-item">
                 <div class="hd-logo">
                     <a href="#">
-                        <img src="/AdminTools/images/logo-xexpress.png" height="40" /></a>
+                        <img src="/AdminTools/images/logo-removed.png" height="40" /></a>
                 </div>
                 <div class="hd-toggler-icon">
                     <i class="icon-menu"></i>

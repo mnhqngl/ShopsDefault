@@ -13,7 +13,7 @@
     function getLinkImage() {
         $('#<%= fuImage.ClientID %>').change(function () {
             var file = $('#<%= fuImage.ClientID %>')[0].files[0]
-            $('#<%= txtImage.ClientID %>').val('/images/UploadImages/san-pham/' + file.name);
+            $('#<%= txtImage.ClientID %>').val('/images/UploadImages/tin-tuc/' + file.name);
         });
     }
     function validateForm() {

@@ -30,6 +30,13 @@ public class Utils
         return link;
     }
 
+    public static string getAHrefURLrelates(object module, object linkSEO, object ID)
+    {
+        string link = "";
+            link = module + "/" + linkSEO + "-" + ID + ".html";
+
+        return link;
+    }
     public static string subString(string str, int maxLength)
     {
         return str.Substring(0, Math.Min(str.Length, maxLength));
