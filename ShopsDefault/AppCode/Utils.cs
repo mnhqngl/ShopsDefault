@@ -30,10 +30,10 @@ public class Utils
         return link;
     }
 
-    public static string getAHrefURLrelates(object module, object linkSEO, object ID)
+    public static string getAHrefURLrelates( object linkSEO, object ID)
     {
         string link = "";
-            link = module + "/" + linkSEO + "-" + ID + ".html";
+            link = linkSEO + "-" + ID + ".html";
 
         return link;
     }
